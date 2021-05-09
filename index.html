@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="leftside">
+        <h1>Hello</h1>
+        <p>We need you to choose a person to view information about him or her.</p>
+        <select class="option" onchange="changeAbout(this.value)">
+            <option disabled>Select one person</option>
+        </select>
+        <div class="about"></div>
+    </div>
+
+    <div class="rightside">
+        <h2>Basic Info:</h2>
+        <p class="name"></p>
+        <p class="info"></p>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
