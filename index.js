@@ -12,7 +12,7 @@ fetch('data.json').then(function (res) {
     }
     changeAbout(persons[0].name + " " + persons[0].surname);
 });
-// Stavljam u listi ko gde pripada
+
 function changeAbout(info) {
     let friendsList = {
         "directFriends": [],
@@ -27,14 +27,11 @@ function changeAbout(info) {
             break;
         }
     }
-    // ----- DIRECT FRIENDS LIST ---
+    
     friendsList.directFriends = friendsList.directFriends.concat(persons[matchIndex].friendsList);
-    // ----- END DIRECT FRIENDS LIST ---
-
-    // --- FOF ----
+    
     for (fofID of friendsList.directFriends) {
         for (frList of persons[fofID - 1].friendsList) {
-            // console.log(frList)
             if (frList == persons[matchIndex].id) {
                 continue;
             }
@@ -43,7 +40,7 @@ function changeAbout(info) {
             }
         }
     }
-    // 
+
     friendsList.suggested = friendsList.suggested.concat(checkSame(friendsList.fof));
     friendsList.fof = checks(friendsList.fof);
     for (let i = 0; i < friendsList.fof.length; i++) {
@@ -51,7 +48,6 @@ function changeAbout(info) {
             if (friendsList.fof[i] == friendsList.directFriends[j]) friendsList.fof.splice(i, 1);
         }
     }
-    // --- END FOF ----
     
     render(friendsList, matchIndex);
 }
